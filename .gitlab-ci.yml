@@ -1,16 +1,25 @@
-image: maven:3.3.9-jdk-8
+# These are the default stages.
+# You don't need to explicitly define them.
+# But you could define any stages you want.
+stages:
+  - build
+  - test
+  - deploy
 
-before_script:
-  #- apk update && apk add git
-  - apt-get update -qq & apt-get install wget
-  - wget https://gist.githubusercontent.com/alonisser/11192482/raw/e1d8d4ed579d64902e951e4f9fa487b793035f9b/setup-headless-selenium-xvfb.sh
-  - sh setup-headless-selenium-xvfb.sh
-  - export DISPLAY=:99.0
-  #- sh -e /etc/init.d/xvfb start
-  - /usr/bin/Xvfb :99 -ac -screen 0 1024x768x8
- # - export DISPLAY=:1
-  - sleep 3
-
-run_test:
+# This is the name of the job.
+# You can choose it freely.
+maven_build:
+  # A job is always executed within a stage.
+  # If no stage is set, it defaults to 'test'.
+  stage: test
+  # Since we require Maven for this job,
+  # we can restrict the job to runners with a certain tag.
+  # Of course, it is our duty to actually configure a runner
+  # with the tag 'maven' and a working maven installation
+  tags:
+    - maven
+  # Here you can execute arbitrate terminal commands.
+  # If any of the commands returns a non zero exit code the job fails.
   script:
-    - mvn test 
+    - echo "Building project with maven"
+    - mvn verify
