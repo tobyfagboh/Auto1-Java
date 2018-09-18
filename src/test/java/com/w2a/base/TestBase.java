@@ -48,6 +48,7 @@ public class TestBase {
 			
 			try {
 				fis = new FileInputStream (System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
+				System.out.println("System Path :: " + System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\testdata.xlsx");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
