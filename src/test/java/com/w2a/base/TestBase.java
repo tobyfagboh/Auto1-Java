@@ -40,6 +40,7 @@ public class TestBase {
 	public static WebDriverWait wait;
 	public ExtentReports rep = ExtentManager.getInstance();
 	public static ExtentTest test;
+	public static String browser;
 	
 	@BeforeSuite
 	public void setUp () {
@@ -75,6 +76,22 @@ public class TestBase {
 				e.printStackTrace();
 			}
 			
+			
+			//Parameterizing build browser 
+	if(System.getenv("browser")!=null && System.getenv("browser").isEmpty()) {
+				
+				browser = System.getenv("browser");
+				
+			}else {
+				
+				browser = config.getProperty("browser");
+				
+			}
+			
+			config.setProperty("browser", browser);
+				
+			
+			
 			if(config.getProperty("browser").equals("firefox")) {
 				
 				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\executables\\geckodriver.exe");
@@ -90,7 +107,7 @@ public class TestBase {
 				System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\executables\\iedriver.exe");
 				driver = new InternetExplorerDriver();
 			}
-			
+		
 			driver.get(config.getProperty("testsiteurl"));
 			log.debug("Navigated to : " +config.getProperty("testsiteurl"));
 			driver.manage().window().maximize();
