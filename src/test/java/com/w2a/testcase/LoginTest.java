@@ -14,7 +14,7 @@ public class LoginTest extends TestBase{
 	@Test
 	public void loginAsAdnin() throws InterruptedException, IOException {
 		
-		//verifyEquals("abc", "xyz");
+		//verifyEquals("abcd", "xyz");
 		Thread.sleep(3000);
 		log.debug("Log in page Executed");
 		driver.findElement(By.id(OR.getProperty("emailId"))).sendKeys(OR.getProperty("userEmail"));

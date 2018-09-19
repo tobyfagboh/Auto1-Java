@@ -17,7 +17,6 @@ public class ExtentManager {
 			extent.loadConfig(new File (System.getProperty("user.dir") + "\\src\\test\\resources\\extentconfig\\ReportsConfig.xml"));
 			
 		}
-		
 		return extent;
 	}
 
