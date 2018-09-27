@@ -7,15 +7,15 @@ import org.testng.annotations.Test;
 
 import com.w2a.base.TestBase;
 @Test
-public class InvalidLogin extends TestBase {
+public class InvalidEmailLogin extends TestBase {
 	
 	
-	public void LoginFails() throws InterruptedException {
+	public void InvalidEmailLoginFails() throws InterruptedException {
 		
-		driver.findElement(By.xpath(OR.getProperty("Emails_Xpath"))).sendKeys(OR.getProperty("WrongEmail_Xpath"));
+		driver.findElement(By.xpath(OR.getProperty("Emails_Xpath"))).sendKeys(OR.getProperty("WrongEmail"));
 		
 		
-		driver.findElement(By.xpath(OR.getProperty("Pass_Xpath"))).sendKeys(OR.getProperty("WrongPass_Xpath"));
+		driver.findElement(By.xpath(OR.getProperty("Pass_Xpath"))).sendKeys(OR.getProperty("Pass"));
 		
 		Thread.sleep(2000);
 		
@@ -24,6 +24,8 @@ public class InvalidLogin extends TestBase {
 		Thread.sleep(1000);
 		
 		WebElement errorMessage = driver.findElement(By.xpath(OR.getProperty("Error_Xpath")));
+		
+		Thread.sleep(3000);
 		
 		Assert.assertEquals(errorMessage.getText(),"Cannot log in, check your email and/or password.");
 		
