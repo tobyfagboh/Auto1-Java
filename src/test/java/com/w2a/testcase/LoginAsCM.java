@@ -23,6 +23,7 @@ public class LoginAsCM extends TestBase {
 
 		Assert.assertTrue(isElementPresent(By.xpath(OR.getProperty("userManagementTxtXpath"))),
 				"Unable to validate Homepage");
+		
 		Thread.sleep(3000);
 		log.debug("Log in s uccessfully executed");
 
