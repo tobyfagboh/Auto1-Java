@@ -8,16 +8,10 @@
 		<listener class-name="com.w2a.listeners.CustomListeners"/>
 	</listeners>
 
-  <test thread-count="5" name="LoginTest">
+  <test thread-count="5" name="SearchTest">
     <classes>
-      <class name="com.w2a.testcase.LoginTest"/>
+      <class name="com.w2a.testcase.search"/>
     </classes>
   </test> <!-- Test -->
-  
-  <test name="Add Admin">
-    <classes>
-      <class name="com.w2a.testcase.addAdmin"/>
-    </classes>
-  </test>
-  
+
 </suite> <!-- Suite -->
